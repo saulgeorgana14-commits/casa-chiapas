@@ -3,8 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurante Carnes y Mariscos | Casa Chiapas — Reforma, Chiapas</title>
-<meta name="description" content="Casa Chiapas, restaurante familiar de carnes y mariscos en Reforma, Chiapas. Envío a domicilio. Abierto Lun–Dom 10:30–18:30.">
+<title>Casa Chiapas | Carnes y Mariscos en Reforma, Chiapas</title>
+<meta name="description" content="Casa Chiapas: El sabor auténtico de la cocina chiapaneca en Reforma. Especialistas en carnes y mariscos con servicio a domicilio. ¡Vente a comer rico!">
+<meta name="keywords" content="Restaurante Reforma Chiapas, Comida Chiapaneca, Carnes y Mariscos, Servicio a Domicilio Reforma, Casa Chiapas">
+<link rel="canonical" href="https://casa-chiapas.vercel.app/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://casa-chiapas.vercel.app/">
+<meta property="og:title" content="Casa Chiapas | Carnes y Mariscos en Reforma">
+<meta property="og:description" content="Disfruta del mejor tasajo y mariscos frescos en un ambiente familiar. Abierto todos los días en Reforma, Chiapas.">
+<meta property="og:image" content="https://casa-chiapas.vercel.app/img/tasajo.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://casa-chiapas.vercel.app/">
+<meta property="twitter:title" content="Casa Chiapas | Carnes y Mariscos en Reforma">
+<meta property="twitter:description" content="Disfruta del mejor tasajo y mariscos frescos en un ambiente familiar. Abierto todos los días en Reforma, Chiapas.">
+<meta property="twitter:image" content="https://casa-chiapas.vercel.app/img/tasajo.jpg">
+
+<!-- JSON-LD Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Casa Chiapas",
+  "image": "https://casa-chiapas.vercel.app/img/tasajo.jpg",
+  "url": "https://casa-chiapas.vercel.app/",
+  "telephone": "+529171008191",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Libramiento Villahermosa–Juárez S/N, Platanal",
+    "addressLocality": "Reforma",
+    "addressRegion": "Chiapas",
+    "postalCode": "29500",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 17.8697,
+    "longitude": -93.2625
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "10:30",
+    "closes": "18:30"
+  },
+  "servesCuisine": "Chiapaneca, Carnes, Mariscos",
+  "priceRange": "$$"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -25,7 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,75,73,0.97
 .hero{position:relative;height:100vh;min-height:500px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .hero-bg{position:absolute;inset:0;background-image:url('hero.jpg');background-size:cover;background-position:center;transform:scale(1.08)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,75,73,.85) 0%,rgba(0,75,73,.6) 60%,rgba(160,82,45,.4) 100%)}
-.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:0 20px;width:100%;max-width:700px}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:0 20px;width:100%;max-width:800px}
 .hero-eyebrow{font-size:.72rem;letter-spacing:3px;color:rgba(255,255,255,.7);text-transform:uppercase;margin-bottom:10px}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,8vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:12px;text-shadow:0 4px 24px rgba(0,0,0,.4)}
 .hero-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.5rem);color:rgba(255,255,255,.9);margin-bottom:24px;padding:0 8px}
@@ -36,9 +94,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,75,73,0.97
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,191,0,.5)}
 .btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid #fff;color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:700;border-radius:999px;padding:11px 22px;text-decoration:none;transition:all .2s}
 .btn-outline:hover{background:#fff;color:var(--nav)}
-.hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:1px}
-.scroll-arrow{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(255,255,255,.5);transform:rotate(45deg);animation:bounce .8s infinite alternate}
-@keyframes bounce{to{transform:rotate(45deg) translateY(5px)}}
 
 /* PATTERN */
 .pattern-bar{width:100%;height:50px;object-fit:cover;display:block}
@@ -79,13 +134,6 @@ section{padding:60px 16px}
 .info-icon{font-size:1.8rem;display:block;margin-bottom:8px}
 .info-label{font-size:.68rem;font-weight:800;letter-spacing:2px;color:var(--cta);text-transform:uppercase;margin-bottom:4px;display:block}
 .info-text{font-size:.85rem;line-height:1.5}
-.info-link{color:var(--cta);text-decoration:none;font-weight:700}
-.info-link:hover{text-decoration:underline}
-
-/* CTA */
-.cta-section{background:var(--blanco);text-align:center;padding:60px 16px;border-top:4px solid rgba(160,82,45,.2)}
-.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:900;color:var(--acento);margin-bottom:12px}
-.cta-sub{font-size:.95rem;color:var(--borde);margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6}
 
 /* LOCATION */
 .location-section{background:var(--fondo);border-top:3px solid var(--borde)}
@@ -98,10 +146,8 @@ section{padding:60px 16px}
 /* FOOTER */
 footer{background:var(--nav);color:#fff;padding:40px 16px 24px;text-align:center}
 .footer-logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:6px}
-.footer-info{font-size:.83rem;color:rgba(255,255,255,.7);margin-bottom:3px}
 .footer-divider{width:60px;height:2px;background:var(--cta);border-radius:2px;margin:16px auto}
 .footer-credit{font-size:.72rem;color:rgba(255,255,255,.5)}
-.footer-credit span{color:var(--cta);font-weight:700}
 
 /* WA FLOAT */
 .wa-float{position:fixed;bottom:24px;right:20px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;animation:pulse-wa 2s infinite}
@@ -118,127 +164,109 @@ footer{background:var(--nav);color:#fff;padding:40px 16px 24px;text-align:center
 <nav>
   <a class="nav-logo" href="#">🍽️ Casa<br>Chiapas</a>
   <ul class="nav-links">
-    <li><a href="#especialidades">Menú</a></li>
-    <li><a href="#info">Horario</a></li>
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#info">Info</a></li>
     <li><a href="#ubicacion">Ubicación</a></li>
-    <li><a href="menu.html" class="nav-cta">📲 Pedir</a></li>
+    <li><a href="menu.html" class="nav-cta">📋 Menú</a></li>
   </ul>
 </nav>
 
 <section class="hero" id="inicio">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg" id="heroBg" style="background-image:url('img/tasajo.jpg')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
-    <p class="hero-eyebrow">Reforma, Chiapas · Desde el corazón de México</p>
+    <p class="hero-eyebrow">Reforma, Chiapas · Tradición Chiapaneca</p>
     <h1>Casa Chiapas</h1>
     <p class="hero-tagline">"Vente a comer rico, vente a Casa Chiapas"</p>
     <div class="hero-badges">
-      <span class="badge">🏠 Restaurante Familiar</span>
-      <span class="badge">🛵 Envío a domicilio</span>
-      <span class="badge">🕙 Lun–Dom · 10:30–18:30</span>
+      <span class="badge">🏠 Familiar</span>
+      <span class="badge">🛵 Domicilio</span>
+      <span class="badge">🕙 10:30–18:30</span>
     </div>
     <div class="hero-actions">
-      <a class="btn-primary" href="menu.html">📋 Ver Menú y Pedir</a>
+      <a class="btn-primary" href="menu.html">📖 Ver Menú</a>
       <a class="btn-outline" href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido" target="_blank" rel="noopener">📲 WhatsApp</a>
     </div>
   </div>
-  <div class="hero-scroll"><div class="scroll-arrow"></div><span>Scroll</span></div>
 </section>
 
-<img class="pattern-bar" src="pattern.png" alt="">
+<img class="pattern-bar" src="pattern.png" alt="Patrón Chiapaneco Decorativo">
 
-<!-- CAROUSEL -->
 <section id="especialidades">
   <div class="fade-in">
-    <p class="section-label">Lo que nos hace únicos</p>
-    <h2 class="section-title">Nuestras Especialidades</h2>
+    <p class="section-label">Lo mejor de nuestra cocina</p>
+    <h2 class="section-title">Especialidades</h2>
     <div class="section-divider"></div>
   </div>
   <div class="carousel-wrap fade-in">
     <div class="carousel-track" id="track">
-      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/tasajo.jpg" alt="Tasajo"><div class="dish-info"><p class="dish-name">Tasajo Chiapaneco</p><p class="dish-desc">Corte tradicional asado al carbón con tortillas y salsa</p><span class="dish-price">$120</span></div></div></div>
-      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/camarones.jpg" alt="Camarones"><div class="dish-info"><p class="dish-name">Camarones al Mojo de Ajo</p><p class="dish-desc">Frescos y bien sazonados, con arroz y tostadas</p><span class="dish-price">$150</span></div></div></div>
-      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/filete.jpg" alt="Filete"><div class="dish-info"><p class="dish-name">Filete a la Plancha</p><p class="dish-desc">Con verduras asadas y arroz rojo</p><span class="dish-price">$130</span></div></div></div>
-      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/costilla.jpg" alt="Costilla"><div class="dish-info"><p class="dish-name">Costilla a las Brasas</p><p class="dish-desc">Término a tu gusto, con frijoles y salsa</p><span class="dish-price">$145</span></div></div></div>
-      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/ceviche.jpg" alt="Ceviche"><div class="dish-info"><p class="dish-name">Ceviche de Mariscos</p><p class="dish-desc">Con tostadas, limón y chiles frescos</p><span class="dish-price">$110</span></div></div></div>
-      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/caldo.jpg" alt="Caldo"><div class="dish-info"><p class="dish-name">Caldo de Res Chiapaneco</p><p class="dish-desc">Con verduras del campo y tortillas de comal</p><span class="dish-price">$90</span></div></div></div>
+      <!-- Slides -->
+      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/tasajo.jpg" alt="Plato de Tasajo Chiapaneco con guarnición"><div class="dish-info"><p class="dish-name">Tasajo Chiapaneco</p><p class="dish-desc">Corte tradicional asado al carbón</p><span class="dish-price">$120</span></div></div></div>
+      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/camarones.jpg" alt="Camarones al Mojo de Ajo frescos"><div class="dish-info"><p class="dish-name">Camarones al Mojo de Ajo</p><p class="dish-desc">Sazonados con ajo y mantequilla</p><span class="dish-price">$150</span></div></div></div>
+      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/filete.jpg" alt="Filete de Pescado a la Plancha saludable"><div class="dish-info"><p class="dish-name">Filete a la Plancha</p><p class="dish-desc">Con verduras frescas del día</p><span class="dish-price">$130</span></div></div></div>
+      <div class="carousel-slide"><div class="dish-card"><img class="dish-img" src="img/costilla.jpg" alt="Costilla de Res a las Brasas jugosa"><div class="dish-info"><p class="dish-name">Costilla a las Brasas</p><p class="dish-desc">Término ideal, con frijoles</p><span class="dish-price">$145</span></div></div></div>
     </div>
   </div>
   <div class="carousel-controls">
-    <button class="carousel-btn" id="prevBtn">&#8592;</button>
+    <button class="carousel-btn" id="prevBtn" aria-label="Anterior">&#8592;</button>
     <div class="carousel-dots" id="dots"></div>
-    <button class="carousel-btn" id="nextBtn">&#8594;</button>
-  </div>
-  <div style="text-align:center;margin-top:28px">
-    <a class="btn-outline" style="border-color:var(--nav);color:var(--nav)" href="menu.html">Ver Menú Completo →</a>
+    <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">&#8594;</button>
   </div>
 </section>
 
-<img class="pattern-bar" src="pattern.png" alt="">
-
-<!-- INFO -->
 <section class="info-strip fade-in" id="info">
   <div class="info-grid">
-    <div class="info-item"><span class="info-icon">🕙</span><span class="info-label">Horario</span><span class="info-text">Lunes a Domingo<br>10:30 – 18:30 hrs</span></div>
-    <div class="info-item"><span class="info-icon">🛵</span><span class="info-label">Domicilio</span><span class="info-text">Moto mandado<br>Reforma y alrededores</span></div>
-    <div class="info-item"><span class="info-icon">💳</span><span class="info-label">Pagos</span><span class="info-text">Efectivo y<br>todas las tarjetas</span></div>
-    <div class="info-item"><span class="info-icon">📍</span><span class="info-label">Ubicación</span><span class="info-text"><a class="info-link" href="https://maps.google.com/?q=VRCW%2B7P+Reforma+Chiapas" target="_blank" rel="noopener">Reforma, Chiapas →</a></span></div>
+    <div class="info-item"><span class="info-icon">🕙</span><span class="info-label">Abierto</span><span class="info-text">Lun–Dom<br>10:30–18:30</span></div>
+    <div class="info-item"><span class="info-icon">🛵</span><span class="info-label">Servicio</span><span class="info-text">Domicilio y<br>Para llevar</span></div>
+    <div class="info-item"><span class="info-icon">💳</span><span class="info-label">Pagos</span><span class="info-text">Efectivo y<br>Tarjetas</span></div>
+    <div class="info-item"><span class="info-icon">📍</span><span class="info-label">Ubicación</span><span class="info-text">Reforma,<br>Chiapas</span></div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section fade-in">
-  <p class="section-label">¿Ya se te antojó?</p>
-  <h2>¡Pide ahorita por WhatsApp!</h2>
-  <p class="cta-sub">Escríbenos y te atendemos de volada 🌶️ Envío a domicilio disponible todos los días.</p>
-  <a class="btn-primary" href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido" target="_blank" rel="noopener">📲 Pedir por WhatsApp</a>
-</section>
-
-<!-- UBICACIÓN -->
 <section class="location-section fade-in" id="ubicacion">
   <div class="location-inner">
-    <p class="section-label">¿Dónde estamos?</p>
-    <h2>📍 Encuéntranos aquí</h2>
-    <p class="address-text">Frente a los Almacenes, Libramiento Villahermosa–Juárez S/N,<br>Platanal, C.P. 29500, Reforma, Chiapas, México</p>
-    <a class="btn-maps" href="https://maps.google.com/?q=VRCW%2B7P+Reforma+Chiapas" target="_blank" rel="noopener">Ver en Google Maps →</a>
+    <p class="section-label">Encuéntranos</p>
+    <h2>📍 Ubicación</h2>
+    <p class="address-text">Libramiento Villahermosa–Juárez S/N, Platanal,<br>Reforma, Chiapas, México (Plus Code: VRCW+7P)</p>
+    <a class="btn-maps" href="https://maps.google.com/?q=VRCW%2B7P+Reforma+Chiapas" target="_blank" rel="noopener">Ver en Google Maps</a>
   </div>
 </section>
 
 <footer>
   <p class="footer-logo">Casa Chiapas</p>
-  <p class="footer-info">📞 +52 917 100 8191</p>
-  <p class="footer-info">Lun–Dom · 10:30 a 18:30 hrs · Reforma, Chiapas</p>
-  <div class="footer-divider"></div>
-  <p class="footer-credit">Sitio web por <span>Nexo Local</span> · Tu negocio, conectado en 72 horas</p>
+  <p class="footer-credit">© 2026 Casa Chiapas | Reforma, Chiapas</p>
+  <p class="footer-credit">Sitio por <span>Nexo Local</span></p>
 </footer>
 
-<a class="wa-float" href="https://wa.me/529171008191?text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa-float" href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido" target="_blank" rel="noopener" aria-label="Chatear en WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-// PARALLAX (desktop only)
-if(window.innerWidth>768){window.addEventListener('scroll',()=>{const bg=document.getElementById('heroBg');if(bg)bg.style.transform=`scale(1.08) translateY(${scrollY*.12}px)`});}
+// Detect resolution
+console.log(`Resolution: ${screen.width}x${screen.height}`);
+
+// PARALLAX (desktop)
+if(window.innerWidth>768){window.addEventListener('scroll',()=>{const bg=document.getElementById('heroBg');if(bg)bg.style.transform=`scale(1.1) translateY(${scrollY*.1}px)`});}
 
 // CAROUSEL
 const track=document.getElementById('track');
-const slides=track.querySelectorAll('.carousel-slide');
 const dotsContainer=document.getElementById('dots');
+const slides=track.querySelectorAll('.carousel-slide');
 const total=slides.length;
-let current=0,perView=1,autoTimer;
-function getPerView(){return window.innerWidth<600?1:window.innerWidth<900?2:window.innerWidth<1200?3:4}
-function updateSlides(){slides.forEach(s=>s.style.minWidth=(100/perView)+'%')}
+let current=0,perView=1;
+
+function getPerView(){return window.innerWidth<600?1:window.innerWidth<1024?2:4}
 function buildDots(){dotsContainer.innerHTML='';const pages=Math.ceil(total/perView);for(let i=0;i<pages;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i*perView);dotsContainer.appendChild(d)}}
 function updateDots(){dotsContainer.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===Math.floor(current/perView)))}
 function goTo(n){current=Math.max(0,Math.min(n,total-perView));track.style.transform=`translateX(-${current*(100/perView)}%)`;updateDots()}
-function next(){goTo(current+1>=total-perView+1?0:current+1)}
-function prev(){goTo(current===0?total-perView:current-1)}
-function startAuto(){autoTimer=setInterval(next,3400)}
-function stopAuto(){clearInterval(autoTimer)}
-document.getElementById('nextBtn').onclick=()=>{next();stopAuto();startAuto()};
-document.getElementById('prevBtn').onclick=()=>{prev();stopAuto();startAuto()};
-window.addEventListener('resize',()=>{perView=getPerView();updateSlides();buildDots();goTo(0)});
-perView=getPerView();updateSlides();buildDots();startAuto();
+function next(){goTo(current+perView>=total?0:current+perView)}
+function prev(){goTo(current-perView<0?total-perView:current-perView)}
+
+document.getElementById('nextBtn').onclick=next;
+document.getElementById('prevBtn').onclick=prev;
+window.onresize=()=>{perView=getPerView();slides.forEach(s=>s.style.minWidth=(100/perView)+'%');buildDots();goTo(0)};
+window.dispatchEvent(new Event('resize'));
 
 // FADE IN
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});

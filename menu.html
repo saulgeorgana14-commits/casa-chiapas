@@ -3,139 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú Casa Chiapas | Pedidos Online</title>
+<title>Menú Casa Chiapas | Pedir Carnes y Mariscos a Domicilio</title>
+<meta name="description" content="Explora nuestro menú completo de Casa Chiapas. Entradas, carnes, mariscos y bebidas tradicionales. Pide a domicilio en Reforma, Chiapas vía WhatsApp.">
+<link rel="canonical" href="https://casa-chiapas.vercel.app/menu.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="restaurant.menu">
+<meta property="og:url" content="https://casa-chiapas.vercel.app/menu.html">
+<meta property="og:title" content="Menú Casa Chiapas | Sabores de Reforma">
+<meta property="og:description" content="Tasajo, camarones, ceviche y más. Mira nuestro menú y haz tu pedido por WhatsApp con entrega a domicilio.">
+<meta property="og:image" content="https://casa-chiapas.vercel.app/img/camarones.jpg">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--cta:#FFBF00;--nav:#004B49;--acento:#D81B60;--borde:#A0522D;--fondo:#F5F5DC;--texto:#004B49}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto);padding-bottom:100px}
-nav{position:fixed;top:0;width:100%;z-index:100;background:var(--nav);display:flex;justify-content:space-between;padding:12px 20px;align-items:center;border-bottom:2px solid var(--borde)}
-.nav-logo{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-weight:900}
-.cart-btn{background:var(--cta);border:none;padding:8px 15px;border-radius:20px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px;padding:80px 15px 20px}
-.card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column}
-.card img{width:100%;height:120px;object-fit:cover}
-.card-body{padding:10px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-.card-name{font-weight:700;font-size:.9rem;margin-bottom:4px}
-.card-price{color:var(--acento);font-weight:800;margin-bottom:8px}
-.add-btn{background:var(--nav);color:#fff;border:none;padding:6px;border-radius:6px;cursor:pointer;font-weight:700;font-size:.8rem}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;z-index:1000;padding:20px;align-items:center;justify-content:center}
-.modal-content{background:#fff;width:100%;max-width:400px;border-radius:15px;padding:20px;max-height:90vh;overflow-y:auto}
-.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
-.qty-btn{background:#eee;border:none;width:24px;height:24px;border-radius:4px;cursor:pointer}
-.checkout-form{margin-top:20px;display:flex;flex-direction:column;gap:10px}
-.checkout-form select, .checkout-form input{padding:10px;border-radius:8px;border:1px solid #ccc}
-.btn-send{background:#25D366;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:800;cursor:pointer;margin-top:10px}
-.btn-close{background:#ff4444;color:#fff;border:none;padding:8px;border-radius:8px;margin-top:10px;cursor:pointer;width:100%}
+body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto);padding-bottom:120px;line-height:1.6}
+nav{position:fixed;top:0;width:100%;z-index:100;background:var(--nav);display:flex;justify-content:space-between;padding:12px 20px;align-items:center;border-bottom:2px solid var(--borde);backdrop-filter:blur(10px)}
+.nav-logo{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem}
+.cart-btn{background:var(--cta);border:none;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:transform 0.2s}
+.cart-btn:active{transform:scale(0.95)}
+
+.container{max-width:1200px;margin:0 auto;padding:80px 15px 20px}
+.category-section{margin-bottom:40px}
+.category-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--acento);margin-bottom:20px;border-bottom:2px solid var(--borde);padding-bottom:10px;display:flex;align-items:center;gap:10px}
+
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px}
+@media(min-width:768px){.menu-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}}
+
+.card{background:#fff;border-radius:15px;overflow:hidden;border:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 10px rgba(0,0,0,0.05)}
+.card:hover{transform:translateY(-8px);box-shadow:0 12px 25px rgba(0,0,0,0.1)}
+.card img{width:100%;height:140px;object-fit:cover;transition:transform 0.5s}
+.card:hover img{transform:scale(1.05)}
+.card-body{padding:15px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.card-name{font-weight:800;font-size:1rem;margin-bottom:6px;color:var(--nav)}
+.card-price{color:var(--acento);font-weight:900;font-size:1.1rem;margin-bottom:12px}
+.add-btn{background:var(--nav);color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:800;font-size:.85rem;transition:background 0.2s}
+.add-btn:hover{background:var(--acento)}
+
+/* MODAL CART */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;z-index:1000;padding:20px;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
+.modal-content{background:#fff;width:100%;max-width:450px;border-radius:20px;padding:25px;max-height:90vh;overflow-y:auto;box-shadow:0 25px 50px rgba(0,0,0,0.3)}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid var(--fondo);padding-bottom:10px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0}
+.item-info b{color:var(--nav);display:block}
+.qty-controls{display:flex;align-items:center;gap:12px}
+.qty-btn{background:var(--fondo);border:none;width:30px;height:30px;border-radius:8px;cursor:pointer;font-weight:900;color:var(--nav);display:flex;align-items:center;justify-content:center}
+.qty-btn:hover{background:var(--cta)}
+
+.checkout-form{margin-top:25px;display:flex;flex-direction:column;gap:12px}
+.checkout-form label{font-weight:800;font-size:0.9rem;color:var(--borde)}
+.checkout-form select, .checkout-form input{padding:12px;border-radius:10px;border:2px solid var(--fondo);font-family:inherit;font-weight:600}
+.checkout-form select:focus, .checkout-form input:focus{outline:none;border-color:var(--cta)}
+
+.total-row{background:var(--fondo);padding:15px;border-radius:12px;margin-top:20px;display:flex;justify-content:space-between;align-items:center}
+.total-label{font-weight:700}
+.total-amount{font-weight:900;font-size:1.5rem;color:var(--acento)}
+
+.btn-send{background:#25D366;color:#fff;border:none;padding:15px;border-radius:12px;font-weight:900;cursor:pointer;margin-top:15px;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-close{background:#f0f0f0;color:var(--texto);border:none;padding:12px;border-radius:12px;margin-top:10px;cursor:pointer;width:100%;font-weight:700}
+.btn-clear{background:transparent;color:var(--acento);border:none;margin-top:10px;cursor:pointer;font-size:0.85rem;font-weight:700;text-decoration:underline}
+
+/* CATEGORY NAVIGATION */
+.cat-nav{background:#fff;padding:10px;position:sticky;top:60px;z-index:90;display:flex;gap:10px;overflow-x:auto;border-bottom:1px solid #ddd}
+.cat-link{white-space:nowrap;padding:6px 15px;background:var(--fondo);text-decoration:none;border-radius:15px;font-size:0.8rem;font-weight:800;color:var(--nav)}
+.cat-link.active{background:var(--nav);color:#fff}
 </style>
 </head>
 <body>
-<nav><a href="index.html" class="nav-logo">🍽️ Casa Chiapas</a><button class="cart-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button></nav>
-<div class="menu-grid" id="menu-items"></div>
-<div class="modal" id="cart-modal"><div class="modal-content"><h3>Tu Pedido</h3><div id="cart-list"></div><div style="margin-top:15px;font-weight:800;font-size:1.2rem">Total: $<span id="total">0</span></div><div class="checkout-form">
-<label>Entrega:</label><select id="delivery-type" onchange="updateTotal()"><option value="pickup">Pasar a buscar (Gratis)</option><option value="delivery">A domicilio (+ $30 mandadito)</option></select>
-<label>Método de Pago:</label><select id="payment-method"><option value="Efectivo">Efectivo</option><option value="Tarjeta">Tarjeta (Terminal)</option><option value="Transferencia">Transferencia</option></select>
-<input type="text" id="customer-name" placeholder="Tu Nombre">
-<input type="text" id="customer-address" placeholder="Dirección (Si es a domicilio)">
-<button class="btn-send" onclick="sendOrder()">🚀 Enviar por WhatsApp</button>
-<button class="btn-close" onclick="toggleCart()">Cerrar</button>
-<button class="btn-close" style="background:#888" onclick="clearCart()">Vaciar Carrito</button>
-</div></div></div>
+<nav>
+  <a href="index.html" class="nav-logo">🍽️ Casa Chiapas</a>
+  <button class="cart-btn" onclick="toggleCart()">🛒 Mi Pedido (<span id="cart-count">0</span>)</button>
+</nav>
+
+<div class="cat-nav">
+  <a href="#entradas" class="cat-link">🥗 Entradas</a>
+  <a href="#comidas" class="cat-link">🍖 Comidas</a>
+  <a href="#bebidas" class="cat-link">🥤 Bebidas</a>
+  <a href="#postres" class="cat-link">🍮 Postres</a>
+</div>
+
+<div class="container">
+  <!-- Sections will be rendered here -->
+  <div id="menu-sections"></div>
+</div>
+
+<div class="modal" id="cart-modal">
+  <div class="modal-content">
+    <div class="cart-header">
+      <h3>Tu Pedido</h3>
+      <button class="btn-clear" onclick="clearCart()">Vaciar</button>
+    </div>
+    <div id="cart-list"></div>
+    
+    <div class="checkout-form">
+      <label>¿Cómo recibes?</label>
+      <select id="delivery-type" onchange="updateTotal()">
+        <option value="pickup">Pasar a buscar (Gratis)</option>
+        <option value="delivery">A domicilio (+ $30 envío)</option>
+      </select>
+      
+      <label>Método de Pago:</label>
+      <select id="payment-method">
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta">Tarjeta (Terminal)</option>
+        <option value="Transferencia">Transferencia</option>
+      </select>
+      
+      <label>Tus Datos:</label>
+      <input type="text" id="customer-name" placeholder="Escribe tu nombre">
+      <input type="text" id="customer-address" placeholder="Dirección completa (Si es a domicilio)">
+    </div>
+
+    <div class="total-row">
+      <span class="total-label">Total a pagar:</span>
+      <span class="total-amount">$<span id="total">0</span></span>
+    </div>
+
+    <button class="btn-send" onclick="sendOrder()">🚀 Enviar por WhatsApp</button>
+    <button class="btn-close" onclick="toggleCart()">Seguir comprando</button>
+  </div>
+</div>
+
 <script>
-const menu = [
- {id:1, name:'Tasajo Chiapaneco', price:120, img:'img/tasajo.jpg'},
- {id:2, name:'Camarones Mojo Ajo', price:150, img:'img/camarones.jpg'},
- {id:3, name:'Filete Plancha', price:130, img:'img/filete.jpg'},
- {id:4, name:'Costilla Brasas', price:145, img:'img/costilla.jpg'},
- {id:5, name:'Ceviche Mariscos', price:110, img:'img/ceviche.jpg'},
- {id:6, name:'Caldo de Res', price:90, img:'img/caldo.jpg'},
- {id:7, name:'Sopa de Lima', price:75, img:'img/sopa_lima.jpg'},
- {id:8, name:'Tostadas Mariscos', price:85, img:'img/tostadas_mariscos.jpg'},
- {id:9, name:'Guacamole', price:65, img:'img/guacamole.jpg'},
- {id:10, name:'Plátano Frito', price:55, img:'img/platano_frito.jpg'},
- {id:11, name:'Flan Napolitano', price:50, img:'img/flan.jpg'},
- {id:12, name:'Nieve de Mamey', price:45, img:'img/nieve_mamey.jpg'},
- {id:13, name:'Agua de Jamaica', price:25, img:'img/agua_jamaica.jpg'},
- {id:14, name:'Agua de Limón', price:25, img:'img/agua_limon.jpg'},
- {id:15, name:'Agua de Tamarindo', price:25, img:'img/agua_tamarindo.jpg'},
- {id:16, name:'Refresco Lata', price:30, img:'img/refresco.jpg'}
+// Detect resolution
+console.log(`Resolution: ${screen.width}x${screen.height}`);
+
+const categories = [
+  {id:'entradas', name:'Entradas', icon:'🥗'},
+  {id:'comidas', name:'Comidas', icon:'🍖'},
+  {id:'bebidas', name:'Bebidas', icon:'🥤'},
+  {id:'postres', name:'Postres', icon:'🍮'}
 ];
+
+const menu = [
+  {id:1, cat:'entradas', name:'Sopa de Lima', price:75, img:'img/sopa_lima.jpg'},
+  {id:2, cat:'entradas', name:'Tostadas Mariscos', price:85, img:'img/tostadas_mariscos.jpg'},
+  {id:3, cat:'entradas', name:'Guacamole', price:65, img:'img/guacamole.jpg'},
+  {id:4, cat:'entradas', name:'Tacos de Canasta', price:55, img:'img/tacos_canasta.jpg'},
+  {id:5, cat:'comidas', name:'Tasajo Chiapaneco', price:120, img:'img/tasajo.jpg'},
+  {id:6, cat:'comidas', name:'Camarones Mojo Ajo', price:150, img:'img/camarones.jpg'},
+  {id:7, cat:'comidas', name:'Filete Plancha', price:130, img:'img/filete.jpg'},
+  {id:8, cat:'comidas', name:'Costilla Brasas', price:145, img:'img/costilla.jpg'},
+  {id:9, cat:'comidas', name:'Ceviche Mariscos', price:110, img:'img/ceviche.jpg'},
+  {id:10, cat:'comidas', name:'Caldo de Res', price:90, img:'img/caldo.jpg'},
+  {id:11, cat:'bebidas', name:'Agua de Jamaica', price:25, img:'img/agua_jamaica.jpg'},
+  {id:12, cat:'bebidas', name:'Agua de Limón', price:25, img:'img/agua_limon.jpg'},
+  {id:13, cat:'bebidas', name:'Agua de Tamarindo', price:25, img:'img/agua_tamarindo.jpg'},
+  {id:14, cat:'bebidas', name:'Refresco Lata', price:30, img:'img/refresco.jpg'},
+  {id:15, cat:'bebidas', name:'Agua Natural', price:20, img:'img/agua_jamaica.jpg'},
+  {id:16, cat:'postres', name:'Plátano Frito', price:55, img:'img/platano_frito.jpg'},
+  {id:17, cat:'postres', name:'Flan Napolitano', price:50, img:'img/flan.jpg'},
+  {id:18, cat:'postres', name:'Nieve de Mamey', price:45, img:'img/nieve_mamey.jpg'}
+];
+
 let cart = JSON.parse(localStorage.getItem('cc_cart')) || [];
+
 function renderMenu(){
- const container = document.getElementById('menu-items');
- container.innerHTML = menu.map(item => `
-  <div class="card">
-   <img src="${item.img}" alt="${item.name}">
-   <div class="card-body">
-    <p class="card-name">${item.name}</p>
-    <p class="card-price">$${item.price}</p>
-    <button class="add-btn" onclick="addToCart(${item.id})">Agregar +</button>
-   </div>
-  </div>
- `).join('');
+  const container = document.getElementById('menu-sections');
+  container.innerHTML = categories.map(cat => `
+    <section class="category-section" id="${cat.id}">
+      <h2 class="category-title">${cat.icon} ${cat.name}</h2>
+      <div class="menu-grid">
+        ${menu.filter(i => i.cat === cat.id).map(item => `
+          <div class="card">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="card-body">
+              <p class="card-name">${item.name}</p>
+              <p class="card-price">$${item.price}</p>
+              <button class="add-btn" onclick="addToCart(${item.id})">Agregar +</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `).join('');
 }
+
 function addToCart(id){
- const item = menu.find(m => m.id === id);
- const inCart = cart.find(c => c.id === id);
- if(inCart) inCart.qty++; else cart.push({...item, qty:1});
- saveCart();
+  const item = menu.find(m => m.id === id);
+  const inCart = cart.find(c => c.id === id);
+  if(inCart) inCart.qty++; else cart.push({...item, qty:1});
+  saveCart();
 }
+
 function saveCart(){
- localStorage.setItem('cc_cart', JSON.stringify(cart));
- updateCartCount();
- renderCart();
+  localStorage.setItem('cc_cart', JSON.stringify(cart));
+  updateCartCount();
+  renderCart();
 }
+
 function updateCartCount(){
- document.getElementById('cart-count').innerText = cart.reduce((s,i)=>s+i.qty, 0);
+  document.getElementById('cart-count').innerText = cart.reduce((s,i)=>s+i.qty, 0);
 }
+
 function toggleCart(){
- const m = document.getElementById('cart-modal');
- m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+  const m = document.getElementById('cart-modal');
+  m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
 }
+
 function renderCart(){
- const list = document.getElementById('cart-list');
- list.innerHTML = cart.map(item => `
-  <div class="cart-item">
-   <div><b>${item.name}</b><br>$${item.price} x ${item.qty}</div>
-   <div>
-    <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-    <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
-   </div>
-  </div>
- `).join('');
- updateTotal();
+  const list = document.getElementById('cart-list');
+  if(cart.length === 0){
+    list.innerHTML = '<p style="text-align:center;padding:20px;color:#888">Tu carrito está vacío</p>';
+    updateTotal();
+    return;
+  }
+  list.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="item-info"><b>${item.name}</b> $${item.price} x ${item.qty}</div>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+        <span style="font-weight:800">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+      </div>
+    </div>
+  `).join('');
+  updateTotal();
 }
+
 function changeQty(id, d){
- const item = cart.find(c => c.id === id);
- item.qty += d;
- if(item.qty <= 0) cart = cart.filter(c => c.id !== id);
- saveCart();
+  const item = cart.find(c => c.id === id);
+  item.qty += d;
+  if(item.qty <= 0) cart = cart.filter(c => c.id !== id);
+  saveCart();
 }
-function clearCart(){ cart = []; saveCart(); }
+
+function clearCart(){ if(confirm('¿Vaciar pedido?')){cart = []; saveCart();} }
+
 function updateTotal(){
- let subtotal = cart.reduce((s,i)=>s+(i.price*i.qty), 0);
- const delivery = document.getElementById('delivery-type').value === 'delivery' ? 30 : 0;
- document.getElementById('total').innerText = subtotal + delivery;
+  let subtotal = cart.reduce((s,i)=>s+(i.price*i.qty), 0);
+  const delivery = document.getElementById('delivery-type').value === 'delivery' ? 30 : 0;
+  document.getElementById('total').innerText = subtotal + delivery;
 }
+
 function sendOrder(){
- if(cart.length === 0) return alert('Carrito vacío');
- const name = document.getElementById('customer-name').value;
- const type = document.getElementById('delivery-type').value;
- const address = document.getElementById('customer-address').value;
- const payment = document.getElementById('payment-method').value;
- if(!name) return alert('Danos tu nombre');
- if(type === 'delivery' && !address) return alert('Danos tu dirección');
- let text = `*NUEVO PEDIDO - CASA CHIAPAS*\n\n`;
- text += `👤 Cliente: ${name}\n`;
- text += `📍 Tipo: ${type === 'delivery' ? 'A domicilio' : 'Pasar a buscar'}\n`;
- if(type === 'delivery') text += `🏠 Dirección: ${address}\n`;
- text += `💳 Pago: ${payment}\n\n`;
- text += `*DETALLE:*\n`;
- cart.forEach(i => { text += `- ${i.qty}x ${i.name} ($${i.price*i.qty})\n`; });
- text += `\n*TOTAL: $${document.getElementById('total').innerText}*`;
- const url = `https://wa.me/529171008191?text=${encodeURIComponent(text)}`;
- window.open(url, '_blank');
+  if(cart.length === 0) return alert('Agrega algo al carrito primero');
+  const name = document.getElementById('customer-name').value;
+  const type = document.getElementById('delivery-type').value;
+  const address = document.getElementById('customer-address').value;
+  const payment = document.getElementById('payment-method').value;
+  
+  if(!name) return alert('Por favor dinos tu nombre');
+  if(type === 'delivery' && !address) return alert('Necesitamos tu dirección para el envío');
+  
+  let text = `*CASA CHIAPAS - NUEVO PEDIDO*\n\n`;
+  text += `👤 *Cliente:* ${name}\n`;
+  text += `🛵 *Entrega:* ${type === 'delivery' ? 'A domicilio' : 'Pasar a buscar'}\n`;
+  if(type === 'delivery') text += `📍 *Dirección:* ${address}\n`;
+  text += `💳 *Método de Pago:* ${payment}\n\n`;
+  text += `*LO QUE PEDISTE:*\n`;
+  cart.forEach(i => { text += `- ${i.qty}x ${i.name} ($${i.price*i.qty})\n`; });
+  text += `\n💰 *TOTAL A PAGAR: $${document.getElementById('total').innerText}*`;
+  
+  const url = `https://wa.me/529171008191?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
 }
+
 renderMenu();
 updateCartCount();
 renderCart();
