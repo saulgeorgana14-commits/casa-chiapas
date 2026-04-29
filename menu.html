@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Completo | Casa Chiapas — Reforma, Chiapas</title>
+<meta name="description" content="Menú completo de Casa Chiapas: entradas, comidas, bebidas y postres. Carnes y mariscos tradicionales chiapanecos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--cta:#FFBF00;--nav:#004B49;--acento:#D81B60;--borde:#A0522D;--fondo:#F5F5DC;--blanco:#fff;--texto:#004B49}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,75,73,0.97);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;border-bottom:2px solid var(--borde)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;font-weight:700;letter-spacing:.4px;transition:color .2s}
+.nav-links a:hover{color:var(--cta)}
+.nav-cta{background:var(--cta);color:var(--nav)!important;border-radius:999px;padding:6px 16px!important;font-weight:800!important}
+
+/* MENU HERO */
+.menu-hero{margin-top:64px;background:var(--nav);padding:64px 5% 48px;text-align:center;position:relative;overflow:hidden}
+.menu-hero::before{content:'';position:absolute;inset:0;background-image:url('pattern.png');background-size:auto 100%;opacity:.12}
+.menu-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;color:#fff;position:relative;z-index:1;margin-bottom:10px}
+.menu-hero p{color:rgba(255,255,255,.75);font-size:1rem;position:relative;z-index:1}
+
+/* CATEGORY TABS */
+.tabs-bar{background:#fff;border-bottom:2px solid rgba(160,82,45,.2);position:sticky;top:64px;z-index:90}
+.tabs{display:flex;justify-content:center;gap:0;max-width:900px;margin:0 auto}
+.tab-btn{flex:1;padding:16px 12px;background:none;border:none;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;color:var(--borde);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;letter-spacing:.5px}
+.tab-btn.active,.tab-btn:hover{color:var(--nav);border-bottom-color:var(--nav)}
+.tab-btn.active{color:var(--acento);border-bottom-color:var(--acento)}
+
+/* MENU LAYOUT */
+.menu-body{display:flex;gap:0;min-height:80vh}
+
+/* SIDEBAR */
+.menu-sidebar{width:240px;flex-shrink:0;padding:40px 24px;border-right:2px solid rgba(160,82,45,.15);position:sticky;top:120px;height:fit-content}
+.sidebar-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--texto);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--borde)}
+.sidebar-cats{list-style:none;display:flex;flex-direction:column;gap:4px}
+.sidebar-cats li a{display:block;padding:10px 14px;border-radius:8px;text-decoration:none;font-size:.88rem;font-weight:700;color:var(--borde);transition:all .2s;border-left:3px solid transparent}
+.sidebar-cats li a:hover,.sidebar-cats li a.active{color:var(--nav);background:rgba(0,75,73,.06);border-left-color:var(--nav)}
+.sidebar-note{margin-top:28px;padding:14px;background:rgba(255,191,0,.1);border-radius:10px;border:1px solid rgba(255,191,0,.3);font-size:.78rem;color:var(--borde);line-height:1.5}
+.sidebar-wa{display:flex;align-items:center;gap:8px;margin-top:20px;background:var(--cta);color:var(--nav);font-weight:800;font-size:.85rem;padding:11px 14px;border-radius:999px;text-decoration:none;justify-content:center;transition:transform .15s}
+.sidebar-wa:hover{transform:scale(1.03)}
+
+/* MENU CONTENT */
+.menu-content{flex:1;padding:40px 5%}
+.menu-category{margin-bottom:64px}
+.cat-header{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+.cat-icon{font-size:2rem}
+.cat-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--texto)}
+.cat-subtitle{font-size:.85rem;color:var(--borde);margin-bottom:28px;margin-left:56px}
+.cat-divider{width:100%;height:1px;background:rgba(160,82,45,.2);margin-bottom:28px}
+
+/* DISH GRID */
+.dish-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.menu-card{background:#fff;border:1.5px solid rgba(160,82,45,.2);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:default}
+.menu-card:hover{transform:translateY(-5px);box-shadow:0 10px 32px rgba(0,0,0,.1)}
+.menu-card-img{width:100%;height:200px;object-fit:cover;display:block}
+.menu-card-img.placeholder{height:200px;background:linear-gradient(135deg,var(--fondo) 0%,rgba(160,82,45,.15) 100%);display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.menu-card-body{padding:16px 18px 20px}
+.menu-card-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--texto);margin-bottom:5px}
+.menu-card-desc{font-size:.78rem;color:var(--borde);line-height:1.5;margin-bottom:12px}
+.menu-card-footer{display:flex;align-items:center;justify-content:space-between}
+.menu-card-price{background:var(--nav);color:#fff;font-size:.82rem;font-weight:800;border-radius:999px;padding:3px 14px}
+.menu-card-tag{font-size:.72rem;color:var(--acento);font-weight:700;background:rgba(216,27,96,.08);border-radius:999px;padding:2px 10px}
+
+/* LIST STYLE for bebidas/postres */
+.dish-list{display:flex;flex-direction:column;gap:12px}
+.list-item{display:flex;align-items:center;gap:16px;background:#fff;border:1.5px solid rgba(160,82,45,.18);border-radius:14px;padding:14px 18px;transition:all .2s}
+.list-item:hover{box-shadow:0 6px 20px rgba(0,0,0,.07);transform:translateX(4px)}
+.list-img{width:72px;height:72px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.list-img-ph{width:72px;height:72px;border-radius:10px;background:var(--fondo);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.list-info{flex:1}
+.list-name{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--texto);margin-bottom:3px}
+.list-desc{font-size:.78rem;color:var(--borde);line-height:1.4}
+.list-price{background:var(--nav);color:#fff;font-size:.82rem;font-weight:800;border-radius:999px;padding:4px 14px;white-space:nowrap}
+
+/* FOOTER */
+footer{background:var(--nav);color:#fff;padding:32px 5%;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;margin-bottom:4px}
+.footer-divider{width:60px;height:2px;background:var(--cta);border-radius:2px;margin:12px auto}
+.footer-credit{font-size:.75rem;color:rgba(255,255,255,.5)}
+.footer-credit span{color:var(--cta);font-weight:700}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;animation:pulse-wa 2s infinite}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@keyframes pulse-wa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">← Casa Chiapas</a>
+  <ul class="nav-links">
+    <li><a href="#entradas">Entradas</a></li>
+    <li><a href="#comidas">Comidas</a></li>
+    <li><a href="#bebidas">Bebidas</a></li>
+    <li><a href="#postres">Postres</a></li>
+    <li><a href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido" target="_blank" class="nav-cta">📲 Pedir</a></li>
+  </ul>
+</nav>
+
+<div class="menu-hero">
+  <h1>Menú a la Carta</h1>
+  <p>Sabores auténticos de Chiapas · Reforma, Chiapas · Lun–Dom 10:30–18:30</p>
+</div>
+
+<div class="menu-body">
+
+  <!-- SIDEBAR -->
+  <aside class="menu-sidebar">
+    <p class="sidebar-title">Categorías</p>
+    <ul class="sidebar-cats">
+      <li><a href="#entradas" class="active">🥗 Entradas</a></li>
+      <li><a href="#comidas">🍖 Comidas</a></li>
+      <li><a href="#bebidas">🥤 Bebidas</a></li>
+      <li><a href="#postres">🍮 Postres</a></li>
+    </ul>
+    <div class="sidebar-note">💳 Aceptamos efectivo y todas las tarjetas.<br><br>🛵 Servicio a domicilio disponible todos los días.</div>
+    <a class="sidebar-wa" href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido+de+Casa+Chiapas" target="_blank" rel="noopener">📲 Hacer pedido</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="menu-content">
+
+    <!-- ENTRADAS -->
+    <section class="menu-category fade-in" id="entradas">
+      <div class="cat-header"><span class="cat-icon">🥗</span><h2 class="cat-title">Entradas</h2></div>
+      <p class="cat-subtitle">Para comenzar con buen pie</p>
+      <div class="cat-divider"></div>
+      <div class="dish-grid">
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/sopa_lima.jpg" alt="Sopa de Lima Chiapaneca">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Sopa de Lima Chiapaneca</p>
+            <p class="menu-card-desc">Caldo de pollo con tiras de tortilla, aguacate y lima fresca</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$75</span><span class="menu-card-tag">★ Favorito</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img placeholder">🫔</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Tostadas de Mariscos</p>
+            <p class="menu-card-desc">Tostadas crujientes con mezcla de mariscos, crema y salsa verde</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$85</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img placeholder">🥑</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Guacamole con Totopos</p>
+            <p class="menu-card-desc">Aguacate hass con jitomate, cebolla, chile y cilantro</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$65</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-img placeholder">🌮</div>
+          <div class="menu-card-body">
+            <p class="menu-card-name">Tacos de Canasta (3 pzas)</p>
+            <p class="menu-card-desc">Frijol, chicharrón o papas con chile, estilo chiapaneco</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$55</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMIDAS -->
+    <section class="menu-category fade-in" id="comidas">
+      <div class="cat-header"><span class="cat-icon">🍖</span><h2 class="cat-title">Comidas</h2></div>
+      <p class="cat-subtitle">Carnes y mariscos de Chiapas al máximo sabor</p>
+      <div class="cat-divider"></div>
+      <div class="dish-grid">
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/tasajo.jpg" alt="Tasajo Chiapaneco">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Tasajo Chiapaneco</p>
+            <p class="menu-card-desc">Corte tradicional asado al carbón con tortillas de comal y salsa</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$120</span><span class="menu-card-tag">★ Especialidad</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/costilla.jpg" alt="Costilla de Res">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Costilla de Res a las Brasas</p>
+            <p class="menu-card-desc">Término a tu gusto, con frijoles y arroz rojo</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$145</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/camarones.jpg" alt="Camarones al Mojo de Ajo">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Camarones al Mojo de Ajo</p>
+            <p class="menu-card-desc">Camarones frescos salteados en mantequilla y ajo dorado</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$150</span><span class="menu-card-tag">★ Favorito</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/filete.jpg" alt="Filete a la Plancha">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Filete de Pescado a la Plancha</p>
+            <p class="menu-card-desc">Con verduras asadas, arroz rojo y salsa verde</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$130</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/ceviche.jpg" alt="Ceviche de Mariscos">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Ceviche de Mariscos</p>
+            <p class="menu-card-desc">Camarón, pulpo y calamar en jugo de limón, con tostadas</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$110</span></div>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img class="menu-card-img" src="img/caldo.jpg" alt="Caldo de Res">
+          <div class="menu-card-body">
+            <p class="menu-card-name">Caldo de Res Estilo Chiapas</p>
+            <p class="menu-card-desc">Hueso de res con verduras de temporada y tortillas</p>
+            <div class="menu-card-footer"><span class="menu-card-price">$90</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEBIDAS -->
+    <section class="menu-category fade-in" id="bebidas">
+      <div class="cat-header"><span class="cat-icon">🥤</span><h2 class="cat-title">Bebidas</h2></div>
+      <p class="cat-subtitle">Frescas y naturales para acompañar tu comida</p>
+      <div class="cat-divider"></div>
+      <div class="dish-list">
+        <div class="list-item">
+          <img class="list-img" src="img/agua_jamaica.jpg" alt="Agua de Jamaica">
+          <div class="list-info"><p class="list-name">Agua de Jamaica</p><p class="list-desc">Infusión de flor de jamaica, fría y natural</p></div>
+          <span class="list-price">$25</span>
+        </div>
+        <div class="list-item">
+          <div class="list-img-ph">🍋</div>
+          <div class="list-info"><p class="list-name">Agua de Limón</p><p class="list-desc">Natural con hielo y menta fresca</p></div>
+          <span class="list-price">$25</span>
+        </div>
+        <div class="list-item">
+          <div class="list-img-ph">🥭</div>
+          <div class="list-info"><p class="list-name">Agua de Tamarindo</p><p class="list-desc">Dulce y refrescante, estilo chiapaneco</p></div>
+          <span class="list-price">$25</span>
+        </div>
+        <div class="list-item">
+          <div class="list-img-ph">🥤</div>
+          <div class="list-info"><p class="list-name">Refresco</p><p class="list-desc">Coca-Cola, Sprite, Manzanita (lata 355ml)</p></div>
+          <span class="list-price">$30</span>
+        </div>
+        <div class="list-item">
+          <div class="list-img-ph">💧</div>
+          <div class="list-info"><p class="list-name">Agua Natural</p><p class="list-desc">Botella 600ml</p></div>
+          <span class="list-price">$20</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- POSTRES -->
+    <section class="menu-category fade-in" id="postres">
+      <div class="cat-header"><span class="cat-icon">🍮</span><h2 class="cat-title">Postres</h2></div>
+      <p class="cat-subtitle">Para terminar con algo dulce</p>
+      <div class="cat-divider"></div>
+      <div class="dish-list">
+        <div class="list-item">
+          <img class="list-img" src="img/platano_frito.jpg" alt="Plátano Frito">
+          <div class="list-info"><p class="list-name">Plátano Macho Frito con Crema y Queso</p><p class="list-desc">Plátano caramelizado con crema ácida y queso seco rallado</p></div>
+          <span class="list-price">$55</span>
+        </div>
+        <div class="list-item">
+          <div class="list-img-ph">🍮</div>
+          <div class="list-info"><p class="list-name">Flan Napolitano</p><p class="list-desc">Cremoso, con cajeta y nuez</p></div>
+          <span class="list-price">$50</span>
+        </div>
+        <div class="list-item">
+          <div class="list-img-ph">🍨</div>
+          <div class="list-info"><p class="list-name">Nieve de Mamey</p><p class="list-desc">Sabor tropical chiapaneco, porción doble</p></div>
+          <span class="list-price">$45</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p class="footer-logo">Casa Chiapas</p>
+  <p style="color:rgba(255,255,255,.7);font-size:.85rem">Lun–Dom · 10:30–18:30 · Reforma, Chiapas</p>
+  <div class="footer-divider"></div>
+  <p class="footer-credit">Sitio web por <span>Nexo Local</span> · Tu negocio, conectado en 72 horas</p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido+de+Casa+Chiapas" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Fade in on scroll
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Sidebar active on scroll
+const cats=['entradas','comidas','bebidas','postres'];
+const sideLinks=document.querySelectorAll('.sidebar-cats a');
+window.addEventListener('scroll',()=>{
+  let active='entradas';
+  cats.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<200)active=id});
+  sideLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+active));
+});
+</script>
+</body>
+</html>
