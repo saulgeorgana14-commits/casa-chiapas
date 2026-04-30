@@ -3,158 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú Casa Chiapas | Pedir Carnes y Mariscos a Domicilio</title>
-<meta name="description" content="Explora nuestro menú completo de Casa Chiapas. Entradas, carnes, mariscos y bebidas tradicionales. Pide a domicilio en Reforma, Chiapas vía WhatsApp.">
+<title>Menú Casa Chiapas | Mariscos y Más en Reforma, Chiapas</title>
+<meta name="description" content="Menú completo Casa Chiapas: cócteles, camarones, caldos, carnes, pescados, tacos y bebidas. Pide a domicilio vía WhatsApp.">
 <link rel="canonical" href="https://casa-chiapas.vercel.app/menu.html">
-
-<!-- Open Graph -->
-<meta property="og:type" content="restaurant.menu">
-<meta property="og:url" content="https://casa-chiapas.vercel.app/menu.html">
-<meta property="og:title" content="Menú Casa Chiapas | Sabores de Reforma">
-<meta property="og:description" content="Tasajo, camarones, ceviche y más. Mira nuestro menú y haz tu pedido por WhatsApp con entrega a domicilio.">
-<meta property="og:image" content="https://casa-chiapas.vercel.app/img/camarones.jpg">
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--cta:#FFBF00;--nav:#004B49;--acento:#D81B60;--borde:#A0522D;--fondo:#F5F5DC;--texto:#004B49}
+:root{--cta:#FFBF00;--nav:#1a0a2e;--acento:#D81B60;--borde:#8B1A4A;--fondo:#0d0520;--texto:#fff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto);padding-bottom:120px;line-height:1.6}
-nav{position:fixed;top:0;width:100%;z-index:100;background:var(--nav);display:flex;justify-content:space-between;padding:12px 20px;align-items:center;border-bottom:2px solid var(--borde);backdrop-filter:blur(10px)}
-.nav-logo{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem}
-.cart-btn{background:var(--cta);border:none;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 15px rgba(255,191,0,0.3);transition:transform 0.2s}
-.cart-btn:active{transform:scale(0.95)}
+body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto);padding-bottom:120px}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,5,32,.97);display:flex;justify-content:space-between;padding:8px 20px;align-items:center;border-bottom:2px solid var(--borde);backdrop-filter:blur(10px)}
+.nav-logo img{height:46px;width:auto}
+.cart-btn{background:var(--cta);border:none;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;color:#1a0a2e;font-family:'Nunito',sans-serif;font-size:.9rem}
 
-.container{max-width:1200px;margin:0 auto;padding:80px 15px 20px}
-.category-section{margin-bottom:40px}
-.category-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--acento);margin-bottom:20px;border-bottom:2px solid var(--borde);padding-bottom:10px;display:flex;align-items:center;gap:10px}
+.floral-bar{width:100%;height:80px;object-fit:cover;display:block;margin-top:62px}
 
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px}
-@media(min-width:768px){.menu-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}}
+.container{max-width:1200px;margin:0 auto;padding:20px 15px}
+.cat-nav{background:rgba(255,255,255,.05);padding:10px 15px;position:sticky;top:62px;z-index:90;display:flex;gap:8px;overflow-x:auto;border-bottom:1px solid rgba(200,0,110,.3);scrollbar-width:none}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-link{white-space:nowrap;padding:7px 16px;background:rgba(255,255,255,.06);text-decoration:none;border-radius:20px;font-size:.82rem;font-weight:800;color:rgba(255,255,255,.8);border:1px solid rgba(200,0,110,.2);transition:all .2s}
+.cat-link:hover,.cat-link.active{background:var(--borde);color:#fff;border-color:var(--borde)}
 
-.card{background:#fff;border-radius:15px;overflow:hidden;border:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 4px 10px rgba(0,0,0,0.05)}
-.card:hover{transform:translateY(-8px);box-shadow:0 12px 25px rgba(0,0,0,0.1)}
-.card img{width:100%;height:140px;object-fit:cover;transition:transform 0.5s}
-.card:hover img{transform:scale(1.05)}
-.card-body{padding:15px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-.card-name{font-weight:800;font-size:1rem;margin-bottom:6px;color:var(--nav)}
-.card-price{color:var(--acento);font-weight:900;font-size:1.1rem;margin-bottom:12px}
-.add-btn{background:var(--nav);color:#fff;border:none;padding:10px;border-radius:10px;cursor:pointer;font-weight:800;font-size:.85rem;transition:background 0.2s}
+.category-section{margin-bottom:48px}
+.category-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--cta);margin-bottom:20px;border-bottom:2px solid rgba(200,0,110,.4);padding-bottom:10px;display:flex;align-items:center;gap:10px}
+.category-subtitle{font-size:.82rem;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:20px;margin-top:-12px}
+
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+@media(min-width:768px){.menu-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+
+.card{background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden;border:1px solid rgba(200,0,110,.2);display:flex;flex-direction:column;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(200,0,110,.2);border-color:rgba(200,0,110,.5)}
+.card img{width:100%;height:150px;object-fit:cover}
+.card-body{padding:12px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.card-name{font-weight:800;font-size:.95rem;margin-bottom:4px;color:#fff}
+.card-desc{font-size:.75rem;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.4}
+.card-price{color:var(--cta);font-weight:900;font-size:1.05rem;margin-bottom:10px}
+.add-btn{background:var(--borde);color:#fff;border:none;padding:9px;border-radius:8px;cursor:pointer;font-weight:800;font-size:.82rem;transition:background .2s;font-family:'Nunito',sans-serif}
 .add-btn:hover{background:var(--acento)}
 
-/* MODAL CART */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;z-index:1000;padding:20px;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
-.modal-content{background:#fff;width:100%;max-width:450px;border-radius:20px;padding:25px;max-height:90vh;overflow-y:auto;box-shadow:0 25px 50px rgba(0,0,0,0.3)}
-.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid var(--fondo);padding-bottom:10px}
-.cart-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0}
-.item-info b{color:var(--nav);display:block}
-.qty-controls{display:flex;align-items:center;gap:12px}
-.qty-btn{background:var(--fondo);border:none;width:30px;height:30px;border-radius:8px;cursor:pointer;font-weight:900;color:var(--nav);display:flex;align-items:center;justify-content:center}
-.qty-btn:hover{background:var(--cta)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;z-index:1000;padding:20px;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.modal-content{background:#1a0a2e;border:1px solid var(--borde);width:100%;max-width:450px;border-radius:20px;padding:25px;max-height:90vh;overflow-y:auto}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:1px solid rgba(200,0,110,.3);padding-bottom:10px}
+.cart-header h3{font-family:'Playfair Display',serif;font-size:1.3rem}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.item-info b{color:var(--cta);display:block;font-size:.9rem}
+.item-info span{font-size:.8rem;color:rgba(255,255,255,.6)}
+.qty-controls{display:flex;align-items:center;gap:10px}
+.qty-btn{background:rgba(255,255,255,.1);border:none;width:28px;height:28px;border-radius:6px;cursor:pointer;font-weight:900;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.qty-btn:hover{background:var(--borde)}
 
-.checkout-form{margin-top:25px;display:flex;flex-direction:column;gap:12px}
-.checkout-form label{font-weight:800;font-size:0.9rem;color:var(--borde)}
-.checkout-form select, .checkout-form input{padding:12px;border-radius:10px;border:2px solid var(--fondo);font-family:inherit;font-weight:600}
-.checkout-form select:focus, .checkout-form input:focus{outline:none;border-color:var(--cta)}
+.checkout-form{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.checkout-form label{font-weight:800;font-size:.85rem;color:var(--cta)}
+.checkout-form select,.checkout-form input{padding:10px 12px;border-radius:10px;border:1px solid rgba(200,0,110,.4);background:rgba(255,255,255,.07);color:#fff;font-family:'Nunito',sans-serif;font-weight:600;font-size:.9rem}
+.checkout-form select:focus,.checkout-form input:focus{outline:none;border-color:var(--cta)}
+.checkout-form select option{background:#1a0a2e}
 
-.total-row{background:var(--fondo);padding:15px;border-radius:12px;margin-top:20px;display:flex;justify-content:space-between;align-items:center}
+.total-row{background:rgba(200,0,110,.1);padding:14px;border-radius:10px;margin-top:16px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(200,0,110,.3)}
 .total-label{font-weight:700}
-.total-amount{font-weight:900;font-size:1.5rem;color:var(--acento)}
+.total-amount{font-weight:900;font-size:1.4rem;color:var(--cta)}
 
-.btn-send{background:#25D366;color:#fff;border:none;padding:15px;border-radius:12px;font-weight:900;cursor:pointer;margin-top:15px;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:10px}
-.btn-close{background:#f0f0f0;color:var(--texto);border:none;padding:12px;border-radius:12px;margin-top:10px;cursor:pointer;width:100%;font-weight:700}
-.btn-clear{background:transparent;color:var(--acento);border:none;margin-top:10px;cursor:pointer;font-size:0.85rem;font-weight:700;text-decoration:underline}
-
-/* CATEGORY NAVIGATION */
-.cat-nav{background:#fff;padding:10px;position:sticky;top:60px;z-index:90;display:flex;gap:10px;overflow-x:auto;border-bottom:1px solid #ddd}
-.cat-link{white-space:nowrap;padding:6px 15px;background:var(--fondo);text-decoration:none;border-radius:15px;font-size:0.8rem;font-weight:800;color:var(--nav)}
-.cat-link.active{background:var(--nav);color:#fff}
+.btn-send{background:#25D366;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;cursor:pointer;margin-top:14px;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;font-family:'Nunito',sans-serif}
+.btn-close{background:rgba(255,255,255,.1);color:#fff;border:none;padding:11px;border-radius:12px;margin-top:8px;cursor:pointer;width:100%;font-weight:700;font-family:'Nunito',sans-serif}
+.btn-clear{background:transparent;color:var(--acento);border:none;cursor:pointer;font-size:.85rem;font-weight:700;text-decoration:underline;font-family:'Nunito',sans-serif}
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">🍽️ Casa Chiapas</a>
+  <a href="index.html" class="nav-logo"><img src="img/pdf/page1_img1.png" alt="Casa Chiapas"></a>
   <button class="cart-btn" onclick="toggleCart()">🛒 Mi Pedido (<span id="cart-count">0</span>)</button>
 </nav>
 
+<img class="floral-bar" src="pattern.png" alt="Patrón Chiapaneco">
+
 <div class="cat-nav">
-  <a href="#entradas" class="cat-link">🥗 Entradas</a>
-  <a href="#comidas" class="cat-link">🍖 Comidas</a>
-  <a href="#bebidas" class="cat-link">🥤 Bebidas</a>
-  <a href="#postres" class="cat-link">🍮 Postres</a>
+  <a href="#cocteles" class="cat-link">🍹 Cócteles y Entradas</a>
+  <a href="#camarones" class="cat-link">🦐 Camarones</a>
+  <a href="#caldos" class="cat-link">🍲 Caldos</a>
+  <a href="#especialidades" class="cat-link">⭐ Especialidades</a>
+  <a href="#tacos" class="cat-link">🌮 Tacos y Tostadas</a>
+  <a href="#charolas" class="cat-link">🎉 Charolas</a>
+  <a href="#carne" class="cat-link">🥩 Carne / Niños</a>
+  <a href="#bebidas" class="cat-link">🍺 Bebidas</a>
 </div>
 
 <div class="container">
-  <!-- Sections will be rendered here -->
   <div id="menu-sections"></div>
 </div>
 
 <div class="modal" id="cart-modal">
   <div class="modal-content">
     <div class="cart-header">
-      <h3>Tu Pedido</h3>
+      <h3>🛒 Tu Pedido</h3>
       <button class="btn-clear" onclick="clearCart()">Vaciar</button>
     </div>
     <div id="cart-list"></div>
-    
     <div class="checkout-form">
       <label>¿Cómo recibes?</label>
       <select id="delivery-type" onchange="updateTotal()">
         <option value="pickup">Pasar a buscar (Gratis)</option>
         <option value="delivery">A domicilio (+ $30 envío)</option>
       </select>
-      
       <label>Método de Pago:</label>
       <select id="payment-method">
         <option value="Efectivo">Efectivo</option>
         <option value="Tarjeta">Tarjeta (Terminal)</option>
         <option value="Transferencia">Transferencia</option>
       </select>
-      
-      <label>Tus Datos:</label>
+      <label>Tu Nombre:</label>
       <input type="text" id="customer-name" placeholder="Escribe tu nombre">
-      <input type="text" id="customer-address" placeholder="Dirección completa (Si es a domicilio)">
+      <input type="text" id="customer-address" placeholder="Dirección (si es a domicilio)">
     </div>
-
     <div class="total-row">
       <span class="total-label">Total a pagar:</span>
       <span class="total-amount">$<span id="total">0</span></span>
     </div>
-
     <button class="btn-send" onclick="sendOrder()">🚀 Enviar por WhatsApp</button>
-    <button class="btn-close" onclick="toggleCart()">Seguir comprando</button>
+    <button class="btn-close" onclick="toggleCart()">Seguir viendo el menú</button>
   </div>
 </div>
 
 <script>
-// Detect resolution
-console.log(`Resolution: ${screen.width}x${screen.height}`);
-
 const categories = [
-  {id:'entradas', name:'Entradas', icon:'🥗'},
-  {id:'comidas', name:'Comidas', icon:'🍖'},
-  {id:'bebidas', name:'Bebidas', icon:'🥤'},
-  {id:'postres', name:'Postres', icon:'🍮'}
+  {id:'cocteles', name:'Cócteles y Entradas', icon:'🍹'},
+  {id:'camarones', name:'Camarones', icon:'🦐'},
+  {id:'caldos', name:'Caldos', icon:'🍲'},
+  {id:'especialidades', name:'Especialidades', icon:'⭐'},
+  {id:'tacos', name:'Tacos y Tostadas', icon:'🌮'},
+  {id:'charolas', name:'Charolas para Compartir', icon:'🎉'},
+  {id:'carne', name:'Carne / Menú de Niños', icon:'🥩'},
+  {id:'bebidas', name:'Bebidas', icon:'🍺'}
 ];
 
 const menu = [
-  {id:1, cat:'entradas', name:'Sopa de Lima', price:75, img:'img/sopa_lima.jpg'},
-  {id:2, cat:'entradas', name:'Tostadas Mariscos', price:85, img:'img/tostadas_mariscos.jpg'},
-  {id:3, cat:'entradas', name:'Guacamole', price:65, img:'img/guacamole.jpg'},
-  {id:4, cat:'entradas', name:'Tacos de Canasta', price:55, img:'img/tacos_canasta.jpg'},
-  {id:5, cat:'comidas', name:'Tasajo Chiapaneco', price:120, img:'img/tasajo.jpg'},
-  {id:6, cat:'comidas', name:'Camarones Mojo Ajo', price:150, img:'img/camarones.jpg'},
-  {id:7, cat:'comidas', name:'Filete Plancha', price:130, img:'img/filete.jpg'},
-  {id:8, cat:'comidas', name:'Costilla Brasas', price:145, img:'img/costilla.jpg'},
-  {id:9, cat:'comidas', name:'Ceviche Mariscos', price:110, img:'img/ceviche.jpg'},
-  {id:10, cat:'comidas', name:'Caldo de Res', price:90, img:'img/caldo.jpg'},
-  {id:11, cat:'bebidas', name:'Agua de Jamaica', price:25, img:'img/agua_jamaica.jpg'},
-  {id:12, cat:'bebidas', name:'Agua de Limón', price:25, img:'img/agua_limon.jpg'},
-  {id:13, cat:'bebidas', name:'Agua de Tamarindo', price:25, img:'img/agua_tamarindo.jpg'},
-  {id:14, cat:'bebidas', name:'Refresco Lata', price:30, img:'img/refresco.jpg'},
-  {id:15, cat:'bebidas', name:'Agua Natural', price:20, img:'img/agua_jamaica.jpg'},
-  {id:16, cat:'postres', name:'Plátano Frito', price:55, img:'img/platano_frito.jpg'},
-  {id:17, cat:'postres', name:'Flan Napolitano', price:50, img:'img/flan.jpg'},
-  {id:18, cat:'postres', name:'Nieve de Mamey', price:45, img:'img/nieve_mamey.jpg'}
+  // COCTELES Y ENTRADAS
+  {id:1, cat:'cocteles', name:'Ensalada de Camarón', price:230, img:'img/pdf/page2_img2.jpeg', desc:'Fresca y sabrosa'},
+  {id:2, cat:'cocteles', name:'Ensalada de Camarón c/ Pulpo', price:260, img:'img/pdf/page2_img2.jpeg', desc:'Con pulpo fresco'},
+  {id:3, cat:'cocteles', name:'Aguachile de Camarón', price:230, img:'Agua chile 3.png', desc:'Salsa verde picante con pepino y aguacate'},
+  {id:4, cat:'cocteles', name:'Aguachile c/ Pulpo', price:260, img:'Agua chile 3.png', desc:'Con trozos de pulpo'},
+  {id:5, cat:'cocteles', name:'Ceviche de Camarón', price:230, img:'redondo 3.png', desc:'Marinado en limón con tomate y cilantro'},
+  {id:6, cat:'cocteles', name:'Ceviche c/ Pulpo', price:260, img:'redondo 3.png', desc:'Con pulpo agregado'},
+  {id:7, cat:'cocteles', name:'Molcajete de Aguachile', price:450, img:'img/pdf/page2_img1.jpeg', desc:'Para compartir. Camarones en molcajete con aguacate'},
+  {id:8, cat:'cocteles', name:'Cóctel de Camarón', price:200, img:'img/pdf/page2_img2.jpeg', desc:'Cóctel tradicional'},
+  {id:9, cat:'cocteles', name:'Vuelve a la Vida', price:260, img:'img/pdf/page2_img2.jpeg', desc:'Camarón, jaiba, pulpo y ostión'},
+  {id:10, cat:'cocteles', name:'Cóctel Camarón c/ Pulpo', price:240, img:'img/pdf/page2_img2.jpeg', desc:'Combinación especial'},
+  {id:11, cat:'cocteles', name:'Tortilla Rellena de Camarón y Queso', price:280, img:'img/pdf/page2_img3.jpeg', desc:'Grande, jugosa y llena de sabor'},
+  {id:12, cat:'cocteles', name:'Cóctel Casa Chiapas', price:400, img:'img/pdf/page2_img2.jpeg', desc:'Nuestra firma especial'},
+  // CAMARONES
+  {id:13, cat:'camarones', name:'Camarones Empanizados', price:230, img:'Camaron empanizado 3.png', desc:'Crujientes y dorados'},
+  {id:14, cat:'camarones', name:'Camarones al Mojo de Ajo', price:230, img:'img/camarones.jpg', desc:'Bañados en ajo y mantequilla'},
+  {id:15, cat:'camarones', name:'Camarones a la Diabla', price:230, img:'img/camarones.jpg', desc:'Picantes en salsa roja'},
+  {id:16, cat:'camarones', name:'Camarones al Coco', price:240, img:'img/camarones.jpg', desc:'Con capa de coco tostado'},
+  {id:17, cat:'camarones', name:'Camarones al Ajillo', price:230, img:'img/camarones.jpg', desc:'Con aceite de oliva y ajo'},
+  {id:18, cat:'camarones', name:'Camarones Cucaracha', price:230, img:'img/camarones.jpg', desc:'Bañado en salsa negra con cáscara'},
+  {id:19, cat:'camarones', name:'Camarones Zarandeados', price:240, img:'img/camarones.jpg', desc:'Estilo Nayarit'},
+  {id:20, cat:'camarones', name:'Camarones al Chiltepín', price:230, img:'img/camarones.jpg', desc:'Picante regional'},
+  {id:21, cat:'camarones', name:'Camarones a la Crema', price:240, img:'img/camarones.jpg', desc:'En salsa cremosa'},
+  {id:22, cat:'camarones', name:'Camarones Mixtos', price:250, img:'img/pdf/page2_img3.jpeg', desc:'Elige dos especialidades'},
+  // CALDOS
+  {id:23, cat:'caldos', name:'Caldo de Camarón', price:220, img:'img/pdf/page3_img1.jpeg', desc:'Caldo tradicional chiapaneco'},
+  {id:24, cat:'caldos', name:'Caldo de Camarón c/ Pulpo', price:220, img:'img/pdf/page3_img1.jpeg', desc:'Con pulpo fresco'},
+  {id:25, cat:'caldos', name:'Caldo de Chilpachole de Camarón', price:250, img:'img/pdf/page3_img1.jpeg', desc:'Receta tradicional'},
+  {id:26, cat:'caldos', name:'Sopa de Mariscos', price:280, img:'img/pdf/page3_img1.jpeg', desc:'Camarón, pulpo, jaiba y ostión'},
+  {id:27, cat:'caldos', name:'Caldo de Camarón con Robalo', price:250, img:'img/pdf/page3_img1.jpeg', desc:'La especialidad de la casa'},
+  // ESPECIALIDADES
+  {id:28, cat:'especialidades', name:'Pulpo a la Plancha', price:435, img:'img/pdf/page4_img1.jpeg', desc:'Tierno y jugoso a la plancha'},
+  {id:29, cat:'especialidades', name:'Pulpo a la Crema', price:435, img:'img/pdf/page4_img1.jpeg', desc:'En salsa cremosa'},
+  {id:30, cat:'especialidades', name:'Pulpo a la Diabla', price:435, img:'img/pdf/page4_img1.jpeg', desc:'Picante y aromático'},
+  {id:31, cat:'especialidades', name:'Pulpo con Camarones', price:435, img:'img/pdf/page4_img1.jpeg', desc:'Doble marisquería'},
+  {id:32, cat:'especialidades', name:'Mojarra Mediana', price:180, img:'img/pdf/page4_img3.jpeg', desc:'Entera, a tu estilo favorito'},
+  {id:33, cat:'especialidades', name:'Mojarra Grande', price:290, img:'img/pdf/page4_img3.jpeg', desc:'Con limón y guarnición'},
+  {id:34, cat:'especialidades', name:'Mojarra Mediana c/ Camarón', price:220, img:'img/pdf/page4_img3.jpeg', desc:'Lo mejor de dos mundos'},
+  {id:35, cat:'especialidades', name:'Fettuccine Alfredo con Camarones', price:240, img:'img/pdf/page4_img2.jpeg', desc:'Pasta cremosa con camarones salteados'},
+  // TACOS Y TOSTADAS
+  {id:36, cat:'tacos', name:'Tacos Casa Chiapas', price:200, img:'img/pdf/page5_img1.jpeg', desc:'4 tacos de camarón y pulpo con puré'},
+  {id:37, cat:'tacos', name:'Tacos de Camarón Empanizado', price:200, img:'img/pdf/page5_img1.jpeg', desc:'Crujientes y deliciosos'},
+  {id:38, cat:'tacos', name:'Tacos de Camarón (Diabla, Crema, Ajillo)', price:200, img:'img/pdf/page5_img1.jpeg', desc:'Elige tu salsa favorita'},
+  {id:39, cat:'tacos', name:'Tostadas de Ceviche', price:200, img:'redondo 3.png', desc:'Ceviche de camarón en tostadas'},
+  {id:40, cat:'tacos', name:'Tostadas de Pulpo (3 pzas)', price:90, img:'img/tostadas_mariscos.jpg', desc:'Pulpo fresco sobre tostada'},
+  {id:41, cat:'tacos', name:'Tostada de Ceviche Camarón', price:80, img:'redondo 3.png', desc:'Unitaria'},
+  // CHAROLAS
+  {id:42, cat:'charolas', name:'Entre Compas (5 personas)', price:1100, img:'img/pdf/page5_img2.jpeg', desc:'5 especialidades a elegir (sin pulpo)'},
+  {id:43, cat:'charolas', name:'Entre + Compas (7 personas)', price:1600, img:'img/pdf/page5_img3.jpeg', desc:'6 especialidades + una mojarra'},
+  {id:44, cat:'charolas', name:"Pa' la Banda (10 personas)", price:2200, img:'img/pdf/page5_img3.jpeg', desc:'Tú eliges tus especialidades favoritas'},
+  // CARNE / NIÑOS
+  {id:45, cat:'carne', name:'Arrachera Importada', price:320, img:'img/pdf/page3_img2.jpeg', desc:'Con chorizo argentino, nopales, cebolla, guacamole y puré'},
+  {id:46, cat:'carne', name:'Milanesa Empanizada de Pollo', price:140, img:'img/pdf/page3_img3.jpeg', desc:'Con puré de papa, ensalada y aderezo chipotle'},
+  {id:47, cat:'carne', name:'Empanadas de Camarón con Queso', price:150, img:'Camaron empanizado 3.png', desc:'Menú especial niños'},
+  // BEBIDAS
+  {id:48, cat:'bebidas', name:'Agua Fresca 700ml', price:35, img:'img/agua_jamaica.jpg', desc:'Jamaica, Limón o Tamarindo'},
+  {id:49, cat:'bebidas', name:'Refresco', price:35, img:'img/refresco.jpg', desc:'Lata'},
+  {id:50, cat:'bebidas', name:'Botella de Agua', price:30, img:'img/agua_limon.jpg', desc:'Natural'},
+  {id:51, cat:'bebidas', name:'Tecate Lata', price:40, img:'img/refresco.jpg', desc:'Bien fría'},
+  {id:52, cat:'bebidas', name:'Corona Lata', price:40, img:'img/refresco.jpg', desc:'Bien fría'},
+  {id:53, cat:'bebidas', name:'Michelada Tecate 1L', price:120, img:'img/refresco.jpg', desc:'Limón, clamato y especias'},
+  {id:54, cat:'bebidas', name:'Michelada Corona 1L', price:120, img:'img/refresco.jpg', desc:'Estilo casa'},
+  {id:55, cat:'bebidas', name:'Miller Caguama', price:80, img:'img/refresco.jpg', desc:''},
+  {id:56, cat:'bebidas', name:'Piña Colada', price:90, img:'img/agua_limon.jpg', desc:'Tropical'},
+  {id:57, cat:'bebidas', name:'Margarita', price:90, img:'img/agua_limon.jpg', desc:'Clásica o de sabor'},
 ];
 
 let cart = JSON.parse(localStorage.getItem('cc_cart')) || [];
@@ -167,11 +211,16 @@ function renderMenu(){
       <div class="menu-grid">
         ${menu.filter(i => i.cat === cat.id).map(item => `
           <div class="card">
-            <img src="${item.img}" alt="${item.name}">
+            <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.src='img/pdf/page2_img1.jpeg'">
             <div class="card-body">
-              <p class="card-name">${item.name}</p>
-              <p class="card-price">$${item.price}</p>
-              <button class="add-btn" onclick="addToCart(${item.id})">Agregar +</button>
+              <div>
+                <p class="card-name">${item.name}</p>
+                ${item.desc ? `<p class="card-desc">${item.desc}</p>` : ''}
+              </div>
+              <div>
+                <p class="card-price">$${item.price.toLocaleString()}</p>
+                <button class="add-btn" onclick="addToCart(${item.id})">+ Agregar</button>
+              </div>
             </div>
           </div>
         `).join('')}
@@ -185,84 +234,68 @@ function addToCart(id){
   const inCart = cart.find(c => c.id === id);
   if(inCart) inCart.qty++; else cart.push({...item, qty:1});
   saveCart();
+  // brief visual feedback
+  const btns = document.querySelectorAll('.add-btn');
+  btns.forEach(b => { if(b.onclick.toString().includes(id)){ b.textContent='✓ Agregado'; setTimeout(()=>b.textContent='+ Agregar',800); }});
 }
 
-function saveCart(){
-  localStorage.setItem('cc_cart', JSON.stringify(cart));
-  updateCartCount();
-  renderCart();
-}
-
-function updateCartCount(){
-  document.getElementById('cart-count').innerText = cart.reduce((s,i)=>s+i.qty, 0);
-}
-
-function toggleCart(){
-  const m = document.getElementById('cart-modal');
-  m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-}
+function saveCart(){ localStorage.setItem('cc_cart', JSON.stringify(cart)); updateCartCount(); renderCart(); }
+function updateCartCount(){ document.getElementById('cart-count').innerText = cart.reduce((s,i)=>s+i.qty,0); }
+function toggleCart(){ const m=document.getElementById('cart-modal'); m.style.display=m.style.display==='flex'?'none':'flex'; }
 
 function renderCart(){
   const list = document.getElementById('cart-list');
-  if(cart.length === 0){
-    list.innerHTML = '<p style="text-align:center;padding:20px;color:#888">Tu carrito está vacío</p>';
-    updateTotal();
-    return;
-  }
+  if(!cart.length){ list.innerHTML='<p style="text-align:center;padding:20px;color:rgba(255,255,255,.5)">Tu carrito está vacío</p>'; updateTotal(); return; }
   list.innerHTML = cart.map(item => `
     <div class="cart-item">
-      <div class="item-info"><b>${item.name}</b> $${item.price} x ${item.qty}</div>
+      <div class="item-info"><b>${item.name}</b><span>$${item.price} c/u</span></div>
       <div class="qty-controls">
-        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-        <span style="font-weight:800">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+        <span style="font-weight:800;min-width:20px;text-align:center">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
       </div>
     </div>
   `).join('');
   updateTotal();
 }
 
-function changeQty(id, d){
-  const item = cart.find(c => c.id === id);
-  item.qty += d;
-  if(item.qty <= 0) cart = cart.filter(c => c.id !== id);
-  saveCart();
-}
-
-function clearCart(){ if(confirm('¿Vaciar pedido?')){cart = []; saveCart();} }
-
-function updateTotal(){
-  let subtotal = cart.reduce((s,i)=>s+(i.price*i.qty), 0);
-  const delivery = document.getElementById('delivery-type').value === 'delivery' ? 30 : 0;
-  document.getElementById('total').innerText = subtotal + delivery;
-}
+function changeQty(id,d){ const item=cart.find(c=>c.id===id); item.qty+=d; if(item.qty<=0)cart=cart.filter(c=>c.id!==id); saveCart(); }
+function clearCart(){ if(confirm('¿Vaciar pedido?')){cart=[];saveCart();} }
+function updateTotal(){ let sub=cart.reduce((s,i)=>s+(i.price*i.qty),0); const d=document.getElementById('delivery-type').value==='delivery'?30:0; document.getElementById('total').innerText=(sub+d).toLocaleString(); }
 
 function sendOrder(){
-  if(cart.length === 0) return alert('Agrega algo al carrito primero');
-  const name = document.getElementById('customer-name').value;
-  const type = document.getElementById('delivery-type').value;
-  const address = document.getElementById('customer-address').value;
-  const payment = document.getElementById('payment-method').value;
-  
+  if(!cart.length) return alert('Agrega algo al carrito primero');
+  const name=document.getElementById('customer-name').value;
+  const type=document.getElementById('delivery-type').value;
+  const address=document.getElementById('customer-address').value;
+  const payment=document.getElementById('payment-method').value;
   if(!name) return alert('Por favor dinos tu nombre');
-  if(type === 'delivery' && !address) return alert('Necesitamos tu dirección para el envío');
-  
-  let text = `*CASA CHIAPAS - NUEVO PEDIDO*\n\n`;
-  text += `👤 *Cliente:* ${name}\n`;
-  text += `🛵 *Entrega:* ${type === 'delivery' ? 'A domicilio' : 'Pasar a buscar'}\n`;
-  if(type === 'delivery') text += `📍 *Dirección:* ${address}\n`;
-  text += `💳 *Método de Pago:* ${payment}\n\n`;
-  text += `*LO QUE PEDISTE:*\n`;
-  cart.forEach(i => { text += `- ${i.qty}x ${i.name} ($${i.price*i.qty})\n`; });
-  text += `\n💰 *TOTAL A PAGAR: $${document.getElementById('total').innerText}*`;
-  
-  const url = `https://wa.me/529171008191?text=${encodeURIComponent(text)}`;
-  window.open(url, '_blank');
+  if(type==='delivery'&&!address) return alert('Necesitamos tu dirección');
+  let text=`*CASA CHIAPAS - NUEVO PEDIDO*\n\n`;
+  text+=`👤 *Cliente:* ${name}\n`;
+  text+=`🛵 *Entrega:* ${type==='delivery'?'A domicilio':'Pasar a buscar'}\n`;
+  if(type==='delivery') text+=`📍 *Dirección:* ${address}\n`;
+  text+=`💳 *Pago:* ${payment}\n\n*PEDIDO:*\n`;
+  cart.forEach(i=>{ text+=`- ${i.qty}x ${i.name} ($${(i.price*i.qty).toLocaleString()})\n`; });
+  text+=`\n💰 *TOTAL: $${document.getElementById('total').innerText}*`;
+  window.open(`https://wa.me/529171008191?text=${encodeURIComponent(text)}`,'_blank');
 }
+
+// Cat nav active on scroll
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.cat-link').forEach(l=>l.classList.remove('active'));
+      const link=document.querySelector(`.cat-link[href="#${e.target.id}"]`);
+      if(link){link.classList.add('active');link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+    }
+  });
+},{threshold:.3});
 
 renderMenu();
 updateCartCount();
 renderCart();
+document.querySelectorAll('.category-section').forEach(s=>observer.observe(s));
 </script>
 </body>
 </html>
