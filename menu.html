@@ -15,7 +15,17 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,5,32,.97);dis
 .nav-logo img{height:75px;width:auto}
 .cart-btn{background:var(--cta);border:none;padding:8px 18px;border-radius:20px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;color:#1a0a2e;font-family:'Nunito',sans-serif;font-size:.9rem}
 
-.floral-bar{width:100%;height:80px;object-fit:cover;display:block;margin-top:90px}
+/* FLORAL BAR */
+.floral-bar{width:100%;height:150px;background-image:url('pattern.png');background-repeat:repeat-x;background-size:auto 100%;animation:mover-barra 40s linear infinite}
+.floral-bar.reverse{animation:mover-barra-reverse 40s linear infinite}
+@keyframes mover-barra {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+@keyframes mover-barra-reverse {
+  from { background-position: 0 0; }
+  to { background-position: -100% 0; }
+}
 
 .container{max-width:1200px;margin:0 auto;padding:20px 15px}
 .cat-nav{background:rgba(255,255,255,.05);padding:10px 15px;position:sticky;top:90px;z-index:90;display:flex;gap:8px;overflow-x:auto;border-bottom:1px solid rgba(200,0,110,.3);scrollbar-width:none}
@@ -72,7 +82,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,5,32,.97);dis
   <button class="cart-btn" onclick="toggleCart()">🛒 Mi Pedido (<span id="cart-count">0</span>)</button>
 </nav>
 
-<img class="floral-bar" src="pattern.png" alt="Patrón Chiapaneco">
+<div class="floral-bar" style="margin-top:90px"></div>
 
 <div class="cat-nav">
   <a href="#cocteles" class="cat-link">🍹 Cócteles y Entradas</a>
@@ -205,28 +215,32 @@ let cart = JSON.parse(localStorage.getItem('cc_cart')) || [];
 
 function renderMenu(){
   const container = document.getElementById('menu-sections');
-  container.innerHTML = categories.map(cat => `
-    <section class="category-section" id="${cat.id}">
-      <h2 class="category-title">${cat.icon} ${cat.name}</h2>
-      <div class="menu-grid">
-        ${menu.filter(i => i.cat === cat.id).map(item => `
-          <div class="card">
-            <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.src='img/pdf/page2_img1.jpeg'">
-            <div class="card-body">
-              <div>
-                <p class="card-name">${item.name}</p>
-                ${item.desc ? `<p class="card-desc">${item.desc}</p>` : ''}
-              </div>
-              <div>
-                <p class="card-price">$${item.price.toLocaleString()}</p>
-                <button class="add-btn" onclick="addToCart(${item.id})">+ Agregar</button>
+  container.innerHTML = categories.map((cat, index) => {
+    const bar = index < categories.length - 1 ? `<div class="floral-bar ${index % 2 === 0 ? 'reverse' : ''}"></div>` : '';
+    return `
+      <section class="category-section" id="${cat.id}">
+        <h2 class="category-title">${cat.icon} ${cat.name}</h2>
+        <div class="menu-grid">
+          ${menu.filter(i => i.cat === cat.id).map(item => `
+            <div class="card">
+              <img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.src='img/pdf/page2_img1.jpeg'">
+              <div class="card-body">
+                <div>
+                  <p class="card-name">${item.name}</p>
+                  ${item.desc ? `<p class="card-desc">${item.desc}</p>` : ''}
+                </div>
+                <div>
+                  <p class="card-price">$${item.price.toLocaleString()}</p>
+                  <button class="add-btn" onclick="addToCart(${item.id})">+ Agregar</button>
+                </div>
               </div>
             </div>
-          </div>
-        `).join('')}
-      </div>
-    </section>
-  `).join('');
+          `).join('')}
+        </div>
+      </section>
+      ${bar}
+    `;
+  }).join('');
 }
 
 function addToCart(id){
