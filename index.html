@@ -110,6 +110,19 @@ section{padding:60px 16px}
 .btn-maps{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--cta);color:var(--cta);background:transparent;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;border-radius:999px;padding:12px 26px;text-decoration:none;transition:all .2s}
 .btn-maps:hover{background:var(--cta);color:#1a0a2e}
 
+/* RESERVATION */
+.reserva-section{background:rgba(139,26,74,.1);padding:60px 16px}
+.reserva-inner{max-width:560px;margin:0 auto}
+.reserva-inner h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;text-align:center;margin-bottom:6px}
+.reserva-sub{text-align:center;font-size:.85rem;color:rgba(255,255,255,.55);margin-bottom:28px}
+.reserva-form{display:flex;flex-direction:column;gap:14px}
+.reserva-form label{font-weight:800;font-size:.82rem;color:var(--cta);margin-bottom:-8px}
+.reserva-form input,.reserva-form select{padding:12px 14px;border-radius:12px;border:1px solid rgba(200,0,110,.4);background:rgba(255,255,255,.06);color:#fff;font-family:'Nunito',sans-serif;font-weight:600;font-size:.9rem;transition:border-color .2s}
+.reserva-form input:focus,.reserva-form select:focus{outline:none;border-color:var(--cta)}
+.reserva-form select option{background:#1a0a2e}
+.btn-reserva{background:var(--cta);color:#1a0a2e;border:none;padding:14px;border-radius:12px;font-weight:900;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;font-family:'Nunito',sans-serif;margin-top:6px;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 20px rgba(255,191,0,.35)}
+.btn-reserva:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,191,0,.55)}
+
 /* FOOTER */
 footer{background:#0a0318;color:#fff;padding:40px 16px 28px;text-align:center;border-top:2px solid var(--borde)}
 .footer-logo{height:120px;width:auto;display:inline-block;margin-bottom:16px}
@@ -149,10 +162,11 @@ footer{background:#0a0318;color:#fff;padding:40px 16px 28px;text-align:center;bo
       <span class="badge">🛵 Domicilio</span>
       <span class="badge">🕙 10:30–18:30</span>
       <span class="badge">🦐 Mariscos Frescos</span>
+      <a href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido" target="_blank" rel="noopener" class="badge" style="text-decoration:none">📲 Pedir por WhatsApp</a>
     </div>
     <div class="hero-actions">
       <a class="btn-primary" href="menu.html">📖 Ver Menú Completo</a>
-      <a class="btn-outline" href="https://wa.me/529171008191?text=Hola%2C+quiero+hacer+un+pedido" target="_blank" rel="noopener">📲 Pedir por WhatsApp</a>
+      <a class="btn-outline" href="#reservaciones">🍽️ Reservaciones</a>
     </div>
   </div>
 </section>
@@ -300,6 +314,38 @@ footer{background:#0a0318;color:#fff;padding:40px 16px 28px;text-align:center;bo
 
 <div class="floral-bar"></div>
 
+<section class="reserva-section fade-in" id="reservaciones">
+  <div class="reserva-inner">
+    <p class="section-label" style="text-align:center">Reserva tu experiencia</p>
+    <h2>🍽️ Reservaciones</h2>
+    <p class="reserva-sub">Completa los datos y te confirmaremos por WhatsApp</p>
+    <div class="reserva-form">
+      <label>Tu nombre</label>
+      <input type="text" id="res-name" placeholder="Ej: Juan Pérez">
+      <label>Fecha deseada</label>
+      <input type="date" id="res-date">
+      <label>Horario propuesto</label>
+      <input type="time" id="res-time" value="14:00">
+      <label>Número de personas</label>
+      <input type="number" id="res-guests" placeholder="Ej: 4" min="1" max="50">
+      <label>Teléfono de contacto</label>
+      <input type="tel" id="res-phone" placeholder="Ej: 917 100 8191">
+      <label>Tipo de evento (opcional)</label>
+      <select id="res-event">
+        <option value="">Sin evento especial</option>
+        <option value="Cumpleaños">🎂 Cumpleaños</option>
+        <option value="Aniversario">💍 Aniversario</option>
+        <option value="Reunión familiar">👨‍👩‍👧‍👦 Reunión familiar</option>
+        <option value="Reunión de negocios">💼 Reunión de negocios</option>
+        <option value="Otro">✨ Otro</option>
+      </select>
+      <button class="btn-reserva" onclick="sendReservation()">📲 Enviar Reservación por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<div class="floral-bar reverse"></div>
+
 <footer>
   <img class="footer-logo" src="img/pdf/page1_img1.png" alt="Casa Chiapas Logo">
   <div class="footer-divider"></div>
@@ -316,6 +362,25 @@ if(window.innerWidth>768){window.addEventListener('scroll',()=>{const bg=documen
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 setTimeout(()=>document.querySelector('.hero .fade-in')?.classList.add('visible'),100);
+
+function sendReservation(){
+  const name=document.getElementById('res-name').value;
+  const date=document.getElementById('res-date').value;
+  const time=document.getElementById('res-time').value;
+  const guests=document.getElementById('res-guests').value;
+  const phone=document.getElementById('res-phone').value;
+  const event=document.getElementById('res-event').value;
+  if(!name||!date||!time||!guests) return alert('Por favor completa nombre, fecha, horario y número de personas');
+  let msg=`*CASA CHIAPAS - RESERVACIÓN*\n\n`;
+  msg+=`👤 *Nombre:* ${name}\n`;
+  msg+=`📅 *Fecha:* ${date}\n`;
+  msg+=`🕐 *Horario:* ${time}\n`;
+  msg+=`👥 *Personas:* ${guests}\n`;
+  if(phone) msg+=`📞 *Teléfono:* ${phone}\n`;
+  if(event) msg+=`🎉 *Evento:* ${event}\n`;
+  msg+=`\n¡Espero confirmación, gracias!`;
+  window.open(`https://wa.me/529171008191?text=${encodeURIComponent(msg)}`,'_blank');
+}
 </script>
 </body>
 </html>
